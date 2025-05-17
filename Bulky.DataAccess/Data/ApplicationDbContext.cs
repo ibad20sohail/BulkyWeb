@@ -20,7 +20,7 @@ namespace Bulky.DataAccess.Data
                 new Category { Id = 3, Name = "History", DisplayOrder = 3 }
                 );
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Title = "Fantastic Beast", Description = "This is a great book.", Author = "Potter", ISBN="123dsdfd4", ListPrice=20, Price=18, Price50= 16, Price100=14}
+                new Product { Id = 1, Title = "Fantastic Beast", Description = "This is a great book.", Author = "Potter", ISBN="123dsdfd4", ListPrice=20, Price=18, Price50= 16, Price100=14, CategoryId=2 ,ImgUrl=""}
                 );
         }
     }
