@@ -143,6 +143,15 @@ namespace BulkyWeb.Areas.Admin.Controllers
         public IActionResult DeletePOST(int id)
         {
             Product obj = _unitOfWork.Product.Get(u=>u.Id==id);
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (!string.IsNullOrEmpty(obj.ImgUrl))
+            {
+                var oldImagePath = Path.Combine(wwwRootPath, obj.ImgUrl.TrimStart('\\'));
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
             _unitOfWork.Product.Remove(obj);
             _unitOfWork.Save();
             TempData["success"] = "Product has been deleted successfully.";

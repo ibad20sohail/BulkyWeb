@@ -1,8 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Product>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mt-2 mb-2">
+    @foreach(var obj in Model)
+    {
+        <div class="card col-lg-4 col-sm-6 p-0">      
+            <img src="@obj.ImgUrl" class="card-img-top p-0" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">@obj.Title</h5>
+                <h5 class="card-title text-muted">by @obj.Author</h5>
+                <hr />
+                <p class="card-text text-decoration-line-through">List price: @obj.ListPrice.ToString("c")</p>
+                <p class="card-text">Price as low as @obj.Price100.ToString("c")</p>
+                <a href="/Customer/Home/Details?id=@obj.Id" class="btn btn-primary w-100 ">View Details</a>
+            </div>
+        </div>
+    }
 </div>
