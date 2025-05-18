@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Bulky.Utilities
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,14 +33,17 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Content Managment</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
-                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
+                        @if(User.IsInRole(SD.Role_Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Content Managment</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>
+                                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a></li>
 
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
